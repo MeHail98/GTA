@@ -1,5 +1,7 @@
 package model.entity.garage;
 
+import exception.logicException.garageException.CapacityException;
+
 public class Garage {
     protected int capacity;
     protected int numberOfVehicles;
@@ -18,8 +20,8 @@ public class Garage {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
-        if(capacity<numberOfVehicles) return;
+    public void setCapacity(int capacity) throws CapacityException {
+        if(capacity<numberOfVehicles) throw new CapacityException("Small capacity for this number of vehicles");
         this.capacity = capacity;
     }
 

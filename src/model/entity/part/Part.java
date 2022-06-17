@@ -4,7 +4,7 @@ public class Part {
     protected int weight;
     protected int price;
 
-    private Part(){
+    protected Part(){
         weight = 0;
         price = 0;
     }

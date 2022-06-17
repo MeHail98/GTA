@@ -1,10 +1,8 @@
 package controller;
 
-import model.entity.garage.Garage;
-import model.entity.garage.garageSubtypes.StaticGarage;
+import exception.logicException.garageException.NullElementException;
+import model.entity.garage.garageSubtypes.DynamicGarage;
 import model.entity.vehicle.Vehicle;
-
-import java.util.Arrays;
 
 public class Main {
     //почему когда присваиваешь одному массиву ссылку на другой воид не работает как надо, только
@@ -15,12 +13,16 @@ public class Main {
         Vehicle vh = new Vehicle();
         Vehicle vh1 = new Vehicle();
         Vehicle vh2 = new Vehicle();
-        Vehicle[] veh = {null,null,vh};
-        StaticGarage st = new StaticGarage(veh);
-        System.out.println(Arrays.toString(st.getVehicles())+""+st.getNumberOfVehicles()+""+st.getCapacity());
-
-        st.add((Vehicle) null);
-        System.out.println(Arrays.toString(st.getVehicles())+""+st.getNumberOfVehicles()+""+st.getCapacity());
+        Vehicle vh3 = null;
+        Vehicle[] veh = {vh1,vh2,vh3};
+        DynamicGarage st = new DynamicGarage(veh);
+        System.out.println(st);
+        try{
+            st.add(vh);
+        } catch (NullElementException e){
+            System.out.println("");
+        }
+        System.out.println(st);
 
 
     }

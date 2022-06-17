@@ -12,11 +12,20 @@ public class GarageUtils {
         return newArray;
     }
 
+    public static Vehicle[] moveNulls(Vehicle[] vehicles, int capacity){
+        Vehicle[] newArray = new Vehicle[capacity];
+        int index = 0;
+        for (Vehicle vehicle:vehicles) {
+            if (vehicle != null) newArray[index++] = vehicle;
+        }
+        return newArray;
+    }
+
      public static Vehicle[] removeNulls(Vehicle[] vehicles){
         Vehicle[] newArray = new Vehicle[countNotNulls(vehicles)];
         int index = 0;
         for (Vehicle vehicle : vehicles) {
-            if (vehicle != null) newArray[index] = vehicle;
+            if (vehicle != null) newArray[index++] = vehicle;
         }
         return newArray;
     }

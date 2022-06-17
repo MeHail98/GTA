@@ -1,5 +1,8 @@
 package model.entity.garage.garageSubtypes;
 
+import exception.logicException.garageException.CapacityException;
+import exception.logicException.garageException.IndexException;
+import exception.logicException.garageException.NullElementException;
 import model.entity.garage.Garage;
 import model.entity.vehicle.Vehicle;
 
@@ -7,50 +10,86 @@ import static model.logic.garageLogic.GarageUtils.*;
 
 public class StaticGarage extends Garage {
     private static final int DEFAULT_CAPACITY = 10;
-    private Vehicle[] vehicles;
+    private Vehicle[] vehicleArray;
 
-    public StaticGarage(Vehicle[] vehicles) {
-        super(vehicles.length, countNotNulls(vehicles));
-        this.vehicles = moveNulls(vehicles);
+    public StaticGarage(int capacity) {
+        super(capacity,0);
+        vehicleArray = new Vehicle[capacity];
     }
 
     public StaticGarage() {
-        vehicles = new Vehicle[DEFAULT_CAPACITY];
+        super(DEFAULT_CAPACITY,0);
+        vehicleArray = new Vehicle[DEFAULT_CAPACITY];
     }
 
-    public StaticGarage(int capacity){
-        vehicles = new Vehicle[capacity];
-        super.capacity = capacity;
-        numberOfVehicles = 0;
+    public StaticGarage (Vehicle[] vehicleArray){
+        this.vehicleArray = moveNulls(vehicleArray);
+        capacity = vehicleArray.length;
+        numberOfVehicles = countNotNulls(vehicleArray);
     }
 
     public Vehicle[] getVehicles() {
-        return vehicles;
+        return vehicleArray;
     }
 
-    public void setVehicles(Vehicle[] vehicles) {
-        this.vehicles = moveNulls(vehicles);
-        capacity = vehicles.length;
-        numberOfVehicles = countNotNulls(vehicles);
+    public void setVehicleArray(Vehicle[] vehicleArray) throws CapacityException{
+        if(countNotNulls(vehicleArray)>capacity) throw new CapacityException("Too many elements for this capacity");
+        this.vehicleArray = moveNulls(vehicleArray,capacity);
+        numberOfVehicles = countNotNulls(vehicleArray);
     }
 
-    public void add(Vehicle vehicle) {
-        if (numberOfVehicles == capacity || vehicle == null) return;
-        for (int i = 0; i < vehicles.length; i++) {
-            if (vehicles[i] == null) {
-                vehicles[i] = vehicle;
-                numberOfVehicles++;
-                break;
+    public void setVehicle(int index, Vehicle vehicle) throws IndexException, NullElementException {
+        if (index < 0 || index >= capacity) {
+            throw new IndexException("Not valid index");
+        } else if(vehicle == null){
+            throw new NullElementException("Not valid element");
+        } else{
+            vehicleArray[index] = vehicle;
+        }
+    }
+
+    public void add(Vehicle vehicle) throws NullElementException, CapacityException {
+        if(vehicle == null) throw new NullElementException("Not valid element");
+        if(numberOfVehicles<capacity){
+            vehicleArray[numberOfVehicles] = vehicle;
+            numberOfVehicles++;
+        } else{
+            throw new CapacityException("Too many elements for this capacity");
+        }
+    }
+
+    public void remove (Vehicle vehicle) throws IndexException{
+        for (int i = 0; i < capacity; i++) {
+            if (vehicleArray[i] ==vehicle) {
+                try{
+                    remove(i);
+                } catch (IndexException e){
+                    throw new IndexException("Something went wrong");
+                }
             }
         }
     }
 
-    public void add (Vehicle...vehicles){
-        if (numberOfVehicles + vehicles.length > this.vehicles.length) return;
-        System.arraycopy(vehicles,0,this.vehicles,numberOfVehicles,vehicles.length);
-        this.vehicles = moveNulls(this.vehicles);
+    public void remove(int index) throws IndexException {
+        if (index == capacity - 1) vehicleArray[index] = null;
+        if (index < 0 || index >= capacity) {
+            throw new IndexException("Not valid index");
+        } else {
+            System.arraycopy(vehicleArray, index + 1, vehicleArray, index, capacity - index - 1);
+            vehicleArray[numberOfVehicles - 1] = null;
+            numberOfVehicles--;
+        }
+    }
 
-        int notNulls = countNotNulls(vehicles);
-        numberOfVehicles = numberOfVehicles + notNulls;
+    @Override
+    public String toString(){
+        if(numberOfVehicles == 0){
+            return super.toString()+"\nGarage is empty";
+        }
+        StringBuilder builder = new StringBuilder();
+        for (Vehicle vh:vehicleArray) {
+            builder.append(vh).append("\n");
+        }
+        return super.toString()+"\n"+builder;
     }
 }
