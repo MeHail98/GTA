@@ -14,16 +14,8 @@ public class Part {
         this.price = price;
     }
 
-    public void setWeight(int weight){
-        this.weight = weight;
-    }
-
     public int getWeight() {
         return weight;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public int getPrice() {
@@ -31,6 +23,6 @@ public class Part {
     }
 
     public String toString(){
-        return "weight = " + weight +", price = " + price;
+        return "weight: " + weight +", price: " + price;
     }
 }

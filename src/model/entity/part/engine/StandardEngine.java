@@ -4,19 +4,20 @@ import exception.logicException.partException.InappropriateValueException;
 
 import static model.logic.partLogic.EngineLogic.*;
 
-public class ToyotaJZ extends Engine{
-    private static final int MAX_HORSEPOWER = 1000;
+public class StandardEngine extends Engine{
 
-    private static final int DEFAULT_HORSEPOWER = 500;
-    private static final int DEFAULT_WEIGHT = 350;
-    private static final int DEFAULT_RELIABILITY = 7;
-    private static final int DEFAULT_PRICE = 2000;
+    private static final int MAX_HORSEPOWER = 400;
 
-    public ToyotaJZ() {
+    private static final int DEFAULT_HORSEPOWER = 150;
+    private static final int DEFAULT_RELIABILITY = 10;
+    private static final int DEFAULT_WEIGHT = 300;
+    private static final int DEFAULT_PRICE = 300;
+
+    public StandardEngine() {
         super(DEFAULT_HORSEPOWER,DEFAULT_RELIABILITY,DEFAULT_WEIGHT,DEFAULT_PRICE);
     }
 
-    public ToyotaJZ(int horsepower) throws InappropriateValueException {
+    public StandardEngine(int horsepower) throws InappropriateValueException{
         super(horsepower,calculateReliability(horsepower));
         if(horsepower>MAX_HORSEPOWER || horsepower<1)
             throw new InappropriateValueException("Too much horsepower for this engine");
@@ -46,7 +47,7 @@ public class ToyotaJZ extends Engine{
 
     @Override
     public String toString(){
-        return String.format("Toyota JZ engine, horsepower: %d, reliability: %d, ",horsepower,reliability)
+        return String.format("standard engine, horsepower: %d, reliability: %d, ",horsepower,reliability)
                 + super.toString();
     }
 }
