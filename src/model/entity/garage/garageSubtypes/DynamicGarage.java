@@ -27,7 +27,7 @@ public class DynamicGarage extends Garage {
         this.vehicleList = vehicleList;
     }
 
-    public DynamicGarage (Vehicle[] vehicleList){
+    public DynamicGarage (Vehicle...vehicleList){
         this.vehicleList = new ArrayList<>(List.of(removeNulls(vehicleList)));
         capacity = numberOfVehicles = this.vehicleList.size();
     }

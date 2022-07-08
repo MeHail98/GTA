@@ -1,6 +1,8 @@
 package model.entity.garage;
 
 import exception.logicException.garageException.CapacityException;
+import exception.logicException.garageException.NullElementException;
+import model.entity.vehicle.Vehicle;
 
 public class Garage {
     protected int capacity;
@@ -14,6 +16,10 @@ public class Garage {
     protected Garage() {
         capacity = 0;
         numberOfVehicles = 0;
+    }
+
+    public void add(Vehicle vehicle)throws NullElementException, CapacityException {
+
     }
 
     public int getCapacity() {

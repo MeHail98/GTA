@@ -1,26 +1,39 @@
 package model.entity.part.wheel;
 
 import model.entity.part.Part;
+import model.entity.part.dye.Dye;
+
+import java.util.Objects;
 
 public class Wheel extends Part {
 
     private static final int DEFAULT_WEIGHT = 80;
     private static final int DEFAULT_PRICE = 500;
 
-    private static final int MAX_STABILITY = 10;
-
-    private static WheelType wheelType;
-    private static int stability;
+    private WheelType wheelType;
 
     public Wheel() {
         super(DEFAULT_WEIGHT,DEFAULT_PRICE);
         wheelType = WheelType.STANDARD_WHEEL;
-        stability = WheelType.STANDARD_WHEEL.getStability();
     }
 
     public Wheel(WheelType wheelType){
         super(wheelType.getWeight(), wheelType.getPrice());
-        stability = wheelType.getStability();
+        this.wheelType = wheelType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || this.getClass() != o.getClass()) return false;
+        Wheel wheel = (Wheel) o;
+        return wheelType == wheel.wheelType;
+    }
+
+    @Override
+    public int hashCode() {
+        int prime = 17;
+        return prime + Objects.hash(wheelType);
     }
 
     public WheelType getWheelType() {
@@ -28,15 +41,19 @@ public class Wheel extends Part {
     }
 
     public int getStability(){
-        return stability;
+        return wheelType.getStability();
+    }
+
+    public void setWheelType(WheelType wheelType){
+        this.wheelType = wheelType;
     }
 
     public int getMaxStability(){
-        return MAX_STABILITY;
+        return wheelType.getMaxStability();
     }
 
     @Override
     public String toString() {
-        return "Wheel, " + super.toString();
+        return wheelType.name() + ", stability: " + wheelType.getStability();
     }
 }
