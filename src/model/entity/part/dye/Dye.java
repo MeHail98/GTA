@@ -31,12 +31,16 @@ public class Dye extends Part {
         return dyeType;
     }
 
+    public String getColour(){
+        return dyeType.getColour();
+    }
+
     public void setDyeType(DyeType dyeType) {
         this.dyeType = dyeType;
     }
 
     @Override
     public String toString(){
-        return "Colour: " + dyeType.name();
+        return "Colour: " + getColour();
     }
 }

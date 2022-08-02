@@ -6,11 +6,12 @@ import model.entity.garage.Garage;
 import model.entity.vehicle.Vehicle;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static model.logic.garageLogic.GarageUtils.*;
 
-public class DynamicGarage extends Garage {
+public class DynamicGarage extends Garage implements Iterable<Vehicle> {
     private List<Vehicle> vehicleList;
 
     public DynamicGarage(int initialCapacity) {
@@ -91,5 +92,10 @@ public class DynamicGarage extends Garage {
             builder.append(vh).append("\n");
         }
         return super.toString()+"\n"+builder;
+    }
+
+    @Override
+    public Iterator<Vehicle> iterator() {
+        return vehicleList.iterator();
     }
 }

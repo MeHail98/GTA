@@ -42,4 +42,10 @@ public class TunerLogic {
         }
     }
 
+    public static void overhaulReliability(Engine engine, int reliability) throws InappropriateValueException{
+        if(reliability> engine.getMaxReliability() || reliability<1)
+            throw new InappropriateValueException("Unacceptable reliability");
+        engine.setReliability(reliability);
+    }
+
 }

@@ -11,15 +11,18 @@ public class Wheel extends Part {
     private static final int DEFAULT_PRICE = 500;
 
     private WheelType wheelType;
+    private int stability;
 
     public Wheel() {
         super(DEFAULT_WEIGHT,DEFAULT_PRICE);
         wheelType = WheelType.STANDARD_WHEEL;
+        stability = wheelType.getStability();
     }
 
     public Wheel(WheelType wheelType){
         super(wheelType.getWeight(), wheelType.getPrice());
         this.wheelType = wheelType;
+        stability = wheelType.getStability();
     }
 
     @Override
@@ -41,11 +44,15 @@ public class Wheel extends Part {
     }
 
     public int getStability(){
-        return wheelType.getStability();
+        return stability;
     }
 
     public void setWheelType(WheelType wheelType){
         this.wheelType = wheelType;
+    }
+
+    public void setStability(int stability){
+        this.stability = stability;
     }
 
     public int getMaxStability(){

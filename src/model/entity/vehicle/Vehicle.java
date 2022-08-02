@@ -7,14 +7,11 @@ import model.entity.part.dye.Dye;
 import model.entity.part.engine.Engine;
 import model.entity.part.wheel.Wheel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import static model.logic.vehicleLogic.VehicleLogic.*;
 
-public class Vehicle {
+public class Vehicle implements Iterable<Part>{
 
     private List<Part> listOfParts;
 
@@ -124,5 +121,10 @@ public class Vehicle {
         }
         return builder+String.format("weight: %d, price: %d"
                 ,calculateWeight(listOfParts),calculatePrice(listOfParts) );
+    }
+
+    @Override
+    public Iterator<Part> iterator() {
+        return listOfParts.iterator();
     }
 }

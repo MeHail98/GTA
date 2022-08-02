@@ -53,10 +53,12 @@ public class Engine extends Part {
         this.horsepower = horsepower;
     }
 
-    public void setReliability(int reliability) throws InappropriateValueException{
-        if(reliability> MAX_RELIABILITY || reliability<1)
-            throw new InappropriateValueException("Unacceptable reliability");
+    public void setReliability(int reliability) {
         this.reliability = reliability;
+    }
+
+    public int getMaxReliability(){
+        return MAX_RELIABILITY;
     }
 
     public EngineType getEngineType() {

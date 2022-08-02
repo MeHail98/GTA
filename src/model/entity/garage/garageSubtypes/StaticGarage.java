@@ -8,7 +8,7 @@ import model.entity.vehicle.Vehicle;
 
 import static model.logic.garageLogic.GarageUtils.*;
 
-public class StaticGarage extends Garage {
+public class StaticGarage extends Garage implements Iterable<Vehicle> {
     private static final int DEFAULT_CAPACITY = 10;
     private Vehicle[] vehicleArray;
 
@@ -91,5 +91,31 @@ public class StaticGarage extends Garage {
             builder.append(vh).append("\n");
         }
         return super.toString()+"\n"+builder;
+    }
+
+    @Override
+    public java.util.Iterator<Vehicle> iterator() {
+        return new Iterator(0,vehicleArray);
+    }
+
+    static class Iterator implements java.util.Iterator<Vehicle> {
+
+        Vehicle[] array;
+        int current;
+
+        private Iterator(int current, Vehicle[] array){
+            this.current = current;
+            this.array = array;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current< array.length;
+        }
+
+        @Override
+        public Vehicle next() {
+            return array[current++];
+        }
     }
 }
