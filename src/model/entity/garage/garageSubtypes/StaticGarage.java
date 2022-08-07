@@ -32,6 +32,11 @@ public class StaticGarage extends Garage implements Iterable<Vehicle> {
         return vehicleArray;
     }
 
+    @Override
+    public Vehicle get(int index){
+        return vehicleArray[index];
+    }
+
     public void setVehicleArray(Vehicle[] vehicleArray) throws CapacityException{
         if(countNotNulls(vehicleArray)>capacity) throw new CapacityException("Too many elements for this capacity");
         this.vehicleArray = moveNulls(vehicleArray,capacity);
@@ -87,7 +92,9 @@ public class StaticGarage extends Garage implements Iterable<Vehicle> {
             return super.toString()+"\nGarage is empty";
         }
         StringBuilder builder = new StringBuilder();
+        builder.append("Static garage\n");
         for (Vehicle vh:vehicleArray) {
+            if(vh == null) break;
             builder.append(vh).append("\n");
         }
         return super.toString()+"\n"+builder;

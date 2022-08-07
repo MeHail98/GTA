@@ -17,9 +17,9 @@ import java.util.Arrays;
 
 public class VehicleReader {
 
-    public static Vehicle readVehicle(String filePath) throws InappropriateValueException {
+    public static Vehicle readVehicle(String filePath) throws InappropriateValueException, IOException {
         Vehicle vehicle = new Vehicle();
-        try(BufferedReader reader = new BufferedReader( new FileReader(filePath))){
+        BufferedReader reader = new BufferedReader( new FileReader(filePath));
             String str;
             while ((str = reader.readLine()) != null){
                 String[] line = str.split(" ");
@@ -46,10 +46,6 @@ public class VehicleReader {
                     }
                 }
             }
-
-        } catch (IOException e){
-            System.err.println(Arrays.toString(e.getStackTrace()));
-        }
         return vehicle;
     }
 }

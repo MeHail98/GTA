@@ -1,6 +1,8 @@
 package model.entity.part;
 
-public class Part implements Cloneable{
+import java.io.Serializable;
+
+public class Part implements Cloneable, Serializable {
     protected int weight;
     protected int price;
     protected int defaultPrice;

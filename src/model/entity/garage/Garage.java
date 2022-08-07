@@ -1,26 +1,29 @@
 package model.entity.garage;
 
 import exception.logicException.garageException.CapacityException;
+import exception.logicException.garageException.IndexException;
 import exception.logicException.garageException.NullElementException;
 import model.entity.vehicle.Vehicle;
 
-public class Garage {
+import java.io.Serializable;
+import java.util.Iterator;
+import java.util.List;
+
+public abstract class Garage implements Serializable, Iterable<Vehicle>{
     protected int capacity;
     protected int numberOfVehicles;
 
-    protected Garage(int capacity, int numberOfVehicles) {
+    public Garage(int capacity, int numberOfVehicles) {
         this.capacity = capacity;
         this.numberOfVehicles = numberOfVehicles;
     }
 
-    protected Garage() {
+    public Garage() {
         capacity = 0;
         numberOfVehicles = 0;
     }
 
-    public void add(Vehicle vehicle)throws NullElementException, CapacityException {
-
-    }
+    public abstract void add(Vehicle vehicle)throws NullElementException, CapacityException;
 
     public int getCapacity() {
         return capacity;
@@ -31,6 +34,8 @@ public class Garage {
         this.capacity = capacity;
     }
 
+    public abstract void remove(int index) throws IndexException;
+
     public int getNumberOfVehicles() {
         return numberOfVehicles;
     }
@@ -38,4 +43,19 @@ public class Garage {
     public String toString(){
         return "capacity = " + capacity + ",number of vehicles = " + numberOfVehicles;
     }
+
+    public Vehicle get(int index) throws IndexException {
+        return null;
+    }
+
+    public Vehicle[] getVehicles(){
+        return null;
+    }
+
+    public List<Vehicle> getVehicleList(){
+        return null;
+    }
+
+    @Override
+    public abstract Iterator<Vehicle> iterator();
 }

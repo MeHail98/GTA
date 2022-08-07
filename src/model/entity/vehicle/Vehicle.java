@@ -7,11 +7,12 @@ import model.entity.part.dye.Dye;
 import model.entity.part.engine.Engine;
 import model.entity.part.wheel.Wheel;
 
+import java.io.Serializable;
 import java.util.*;
 
 import static model.logic.vehicleLogic.VehicleLogic.*;
 
-public class Vehicle implements Iterable<Part>{
+public class Vehicle implements Iterable<Part>, Serializable {
 
     private List<Part> listOfParts;
 
@@ -127,4 +128,5 @@ public class Vehicle implements Iterable<Part>{
     public Iterator<Part> iterator() {
         return listOfParts.iterator();
     }
+
 }

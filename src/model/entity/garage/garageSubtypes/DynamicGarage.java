@@ -33,7 +33,7 @@ public class DynamicGarage extends Garage implements Iterable<Vehicle> {
         capacity = numberOfVehicles = this.vehicleList.size();
     }
 
-    public List<Vehicle> getVehicles() {
+    public List<Vehicle> getVehicleList() {
         return vehicleList;
     }
 
@@ -47,6 +47,7 @@ public class DynamicGarage extends Garage implements Iterable<Vehicle> {
         capacity = numberOfVehicles = this.vehicleList.size();
     }
 
+    @Override
     public Vehicle get (int index) throws IndexException {
         if(index>= vehicleList.size() || index<0) throw new IndexException("Index out of bounds");
         return vehicleList.get(index);
@@ -88,6 +89,7 @@ public class DynamicGarage extends Garage implements Iterable<Vehicle> {
             return super.toString()+"\nGarage is empty";
         }
         StringBuilder builder = new StringBuilder();
+        builder.append("Dynamic garage\n");
         for (Vehicle vh:vehicleList) {
             builder.append(vh).append("\n");
         }
