@@ -58,8 +58,8 @@ public class Utils {
     public static boolean isEnough(Garage garage){
         System.out.println("Here is your garage now: " + garage);
         System.out.println("""
-        Is that's it or you want to continue?
-        1. Continue 
+        Is that's it or you want to do one more?
+        1. One more 
         2. That's it
         """);
         int input = Utils.inputCheck(2);
