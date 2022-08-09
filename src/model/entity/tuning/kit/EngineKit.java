@@ -20,4 +20,9 @@ public enum EngineKit {
     public int getCost(){
         return cost;
     }
+
+    @Override
+    public String toString() {
+        return  name() + ", horsepower improvement_percentage: " + improvement_percentage + ", cost "+cost;
+    }
 }

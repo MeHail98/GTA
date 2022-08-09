@@ -23,12 +23,16 @@ public class TunerLogic {
         double newStreamlining = body.getStreamlining()*(1+(double)percentage/100);
         if(newStreamlining > body.getMaxStreamlining()) newStreamlining = body.getMaxStreamlining();
         body.setStreamlining((int)newStreamlining);
+        double price = body.getPrice()*(1.2+(double)percentage/200);
+        body.setPrice((int)price);
     }
 
     public static void overhaulEngine(Engine engine, int percentage) {
         double newHorsepower = engine.getHorsepower()*(1+(double)percentage/100);
         if(newHorsepower > engine.getMaxHorsepower()) newHorsepower = engine.getMaxHorsepower();
         engine.setHorsepower((int)newHorsepower);
+        double price = engine.getPrice()*(1.2+(double)percentage/200);
+        engine.setPrice((int)price);
     }
 
     public static void manualOverhaul(Engine engine, int horsepower) throws InappropriateValueException{

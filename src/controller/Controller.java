@@ -1,5 +1,6 @@
 package controller;
 
+import controller.TuningController.TuningController;
 import controller.garageCreationController.RandomGarageCreationController;
 import controller.garageCreationController.ReadFileGarageCreationController;
 import controller.vehicleCreationController.ReadFileVehicleCreationController;
@@ -21,7 +22,7 @@ public class Controller {
         switch (input) {
             case 1 -> CreationController.createGarageManually();
             case 2 -> ReadFileGarageCreationController.deserializeGarage();
-            case 3 -> RandomGarageCreationController.generateRandomGarage();
+            case 3 -> RandomGarageCreationController.generateRandomGarage();//не сделано
         }
     }
 
@@ -39,7 +40,7 @@ public class Controller {
             case 1 -> CreationController.removeVehicle(garage);
             case 2 -> CreationController.createVehicle(garage);
             case 3 -> CreationController.sortVehicles(garage);
-//            case 4 ->
+            case 4 -> TuningController.chooseVehicleToTune(garage);
             case 5 -> isGarageReady(garage);
     }
 }

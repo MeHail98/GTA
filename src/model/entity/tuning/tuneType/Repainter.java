@@ -42,7 +42,7 @@ public class Repainter extends TuneType{
 
     @Override
     public String toString() {
-        return "new dye: " + dye;
+        return "new dye: " + dye+", work cost "+REPAINT_COST;
     }
 
 }

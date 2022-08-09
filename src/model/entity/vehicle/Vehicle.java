@@ -7,12 +7,15 @@ import model.entity.part.dye.Dye;
 import model.entity.part.engine.Engine;
 import model.entity.part.wheel.Wheel;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.*;
 
 import static model.logic.vehicleLogic.VehicleLogic.*;
 
 public class Vehicle implements Iterable<Part>, Serializable {
+    @Serial
+    private static final long serialVersionUID = 1;
 
     private List<Part> listOfParts;
 

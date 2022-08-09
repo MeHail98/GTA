@@ -43,6 +43,10 @@ public class ReadFileVehicleCreationController {
     }
 
     public static void writeVehicleInFile(Garage garage){
+        if(garage.getNumberOfVehicles() <1 ) {
+            System.out.println("No vehicles in your garage");
+            Controller.isGarageReady(garage);
+        }
         System.out.println("\nPlease choose vehicle you want to write from your garage :");
         int count = 0;
         for (Vehicle vehicle: garage) {

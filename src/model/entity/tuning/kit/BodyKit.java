@@ -1,7 +1,7 @@
 package model.entity.tuning.kit;
 
 public enum BodyKit {
-    MEDIUM_KIT(10,1000), EXTREME_KIT(20,2000);
+    MEDIUM_KIT(20,1000), EXTREME_KIT(40,2000);
 
     private final int improvement_percentage;
     private final int cost;
@@ -17,5 +17,10 @@ public enum BodyKit {
 
     public int getCost(){
         return cost;
+    }
+
+    @Override
+    public String toString() {
+        return  name() + ", streamlining improvement_percentage: " + improvement_percentage + ", cost "+cost;
     }
 }

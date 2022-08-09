@@ -5,11 +5,14 @@ import exception.logicException.garageException.IndexException;
 import exception.logicException.garageException.NullElementException;
 import model.entity.vehicle.Vehicle;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
 
 public abstract class Garage implements Serializable, Iterable<Vehicle>{
+    @Serial
+    private static final long serialVersionUID = 1;
     protected int capacity;
     protected int numberOfVehicles;
 
@@ -35,6 +38,8 @@ public abstract class Garage implements Serializable, Iterable<Vehicle>{
     }
 
     public abstract void remove(int index) throws IndexException;
+
+    public abstract void remove(Vehicle vehicle) throws IndexException, NullElementException;
 
     public int getNumberOfVehicles() {
         return numberOfVehicles;

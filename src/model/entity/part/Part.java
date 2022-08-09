@@ -1,8 +1,12 @@
 package model.entity.part;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Part implements Cloneable, Serializable {
+    @Serial
+    private static final long serialVersionUID = 1;
+
     protected int weight;
     protected int price;
     protected int defaultPrice;

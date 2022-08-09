@@ -45,6 +45,6 @@ public class BodyKitSetter extends TuneType {
 
         @Override
         public String toString() {
-            return "body kit: " + bodyKit;
+            return "body kit - " + bodyKit + ", work cost " + ADD_BODY_KIT_COST;
         }
 }

@@ -6,6 +6,9 @@ import exception.logicException.tunerException.BadEngineKitException;
 import exception.logicException.tunerException.ImpossibleToTuneException;
 import model.entity.vehicle.Vehicle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class TuneType {
 
     public abstract int getCost();

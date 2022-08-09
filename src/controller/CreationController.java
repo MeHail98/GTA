@@ -87,7 +87,9 @@ public class CreationController {
         System.out.println("\nPlease choose vehicle you want to remove from your garage :");
         int count = 0;
         for (Vehicle vehicle: garage) {
-            if(vehicle == null) break;
+            if(vehicle == null) {
+                break;
+            }
             count++;
             System.out.println(count + ". " + vehicle);
         }

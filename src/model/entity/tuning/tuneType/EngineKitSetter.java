@@ -47,7 +47,7 @@ public class EngineKitSetter extends TuneType{
 
     @Override
     public String toString() {
-        return "engine kit: " + engineKit;
+        return "engine kit - " + engineKit+", work cost " + ADD_ENGINE_KIT_COST;
     }
 
 }

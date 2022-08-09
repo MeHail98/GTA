@@ -42,7 +42,7 @@ public class NewEngineAdder extends TuneType{
 
     @Override
     public String toString() {
-        return "new engine: " + newEngine;
+        return "new engine: " + newEngine+", work cost "+ADD_NEW_ENGINE_COST;
     }
 
 }

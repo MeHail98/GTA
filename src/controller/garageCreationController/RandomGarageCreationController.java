@@ -8,7 +8,11 @@ import model.entity.garage.Garage;
 import model.entity.garage.garageSubtypes.StaticGarage;
 import model.logic.garageLogic.GarageBuilder.RandomGarageBuilder;
 
+import java.util.Random;
+
 public class RandomGarageCreationController {
+
+    static Random random = new Random();
 
     public static void fulfillRandomly(Garage garage, int initialCapacity)  {
         try{
@@ -24,6 +28,7 @@ public class RandomGarageCreationController {
 
 
     public static void generateRandomGarage(){
-
+        Garage garage = RandomGarageBuilder.createRandomGarage(random.nextInt(1));
+        Controller.isGarageReady(garage);
     }
 }
